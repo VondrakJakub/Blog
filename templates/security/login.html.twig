@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="fixed w-1/3 h-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div class="bg-white p-6 shadow-md rounded-lg border border-gray-300">
+            <h1 class="text-3xl text-center font-semibold mb-4">Log In</h1>
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="mt-1 block w-full rounded-md border border-transparent shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-300 py-3 px-4 mb-4" placeholder="Email" autocomplete="email" required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" name="password" id="inputPassword" class="mt-1 block w-full rounded-md border border-transparent shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-300 py-3 px-4 mb-4" placeholder="Password" autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300">Log In</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

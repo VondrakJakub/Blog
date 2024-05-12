@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+    <div class="fixed w-1/3 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div class="bg-white p-6 shadow-md rounded-lg border border-gray-300">
+            <h1 class="text-3xl text-center font-semibold mb-4">Registration</h1>
+
+            {{ form_errors(registrationForm) }}
+
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email, {
+                'attr': {
+                    'class': 'mt-1 block w-full rounded-md border border-transparent shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-300 py-3 px-4 mb-4',
+                    'placeholder': 'Email'
+                }
+            }) }}
+            {{ form_row(registrationForm.plainPassword, {
+                'attr': {
+                    'class': 'mt-1 block w-full rounded-md border border-transparent shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-300 py-3 px-4 mb-4',
+                    'placeholder': 'Password'
+                }
+            }) }}
+            <button type="submit" class="w-full bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300">Register</button>
+            {{ form_end(registrationForm) }}
+
+        </div>
+    </div>
+
+{% endblock %}

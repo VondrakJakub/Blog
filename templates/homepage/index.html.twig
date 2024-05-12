@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Your Post{% endblock %}
+{% block title %}Homepage{% endblock %}
 
 {% block body %}
     <div class="container mx-auto px-8 mt-8 grid grid-cols-1 gap-4">
         {% for article in articles %}
             <div>
                 <!-- Card 1 -->
-                <a href="/articles/user/{{ article.id }}" class="block">
+                <a href="/articles/{{ article.id }}" class="block">
                     <div class="bg-white p-6 shadow-md rounded-lg border border-gray-300 hover:border-gray-500 transition duration-300">
                         <h2 class="text-xl font-semibold mb-2">{{ article.title }}</h2>
                         <p class="text-gray-600" style="max-height: 100px; overflow: hidden;">{{ article.content }}</p>
